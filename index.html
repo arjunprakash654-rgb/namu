@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#150826">
+<title>She is Namya ♥ · for my Namu</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>💜</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:'Poppins',system-ui,sans-serif;
+  background:#150826;
+  color:#fff;
+  overflow:hidden;
+}
+.script{font-family:'Great Vibes',cursive}
+
+.bg{position:fixed;inset:0;z-index:-1;background:linear-gradient(160deg,#1d0b33 0%,#2a1245 45%,#12071f 100%)}
+.bg::before,.bg::after{content:"";position:absolute;inset:0}
+.bg::before{background:radial-gradient(circle at 14% 18%,rgba(255,110,180,.17),transparent 42%);animation:glowA 12s ease-in-out infinite alternate}
+.bg::after{background:radial-gradient(circle at 86% 82%,rgba(140,90,255,.20),transparent 45%);animation:glowB 14s ease-in-out infinite alternate}
+@keyframes glowA{to{opacity:.55}}
+@keyframes glowB{to{opacity:.6}}
+
+.float-heart{position:fixed;bottom:-46px;pointer-events:none;z-index:1;animation:rise linear forwards}
+@keyframes rise{
+  0%{transform:translate(0,10vh) rotate(-8deg);opacity:0}
+  8%{opacity:var(--o)}
+  85%{opacity:var(--o)}
+  100%{transform:translate(var(--sway),-115vh) rotate(10deg);opacity:0}
+}
+
+.vignette{position:fixed;inset:0;pointer-events:none;z-index:3;background:radial-gradient(ellipse at center,transparent 52%,rgba(10,3,20,.6) 100%)}
+
+.slide{
+  position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:clamp(14px,3vh,26px);
+  opacity:0;visibility:hidden;pointer-events:none;z-index:2;
+  transition:opacity .9s ease,visibility .9s;
+  padding:clamp(70px,10vh,90px) 22px clamp(100px,14vh,120px);
+}
+.slide.active{opacity:1;visibility:visible;pointer-events:auto}
+
+.slide>*{
+  opacity:0;transform:translateY(26px);
+  transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);
+}
+.slide.active>*{opacity:1;transform:none}
+.slide.active>*:nth-child(1){transition-delay:.12s}
+.slide.active>*:nth-child(2){transition-delay:.32s}
+.slide.active>*:nth-child(3){transition-delay:.55s}
+.slide.active>*:nth-child(4){transition-delay:.8s}
+.slide.active>*:nth-child(5){transition-delay:1.05s}
+.slide.active>*:nth-child(6){transition-delay:1.3s}
+.slide.active>*:nth-child(7){transition-delay:1.55s}
+.slide.active>*:nth-child(8){transition-delay:1.8s}
+.slide.active>*:nth-child(9){transition-delay:2.05s}
+
+.kicker{font-size:clamp(10px,2.6vw,13px);letter-spacing:.35em;text-transform:uppercase;color:#d9a7ff;font-weight:500;text-align:center}
+.title{
+  font-size:clamp(3rem,11vw,6.6rem);line-height:1.05;text-align:center;
+  background:linear-gradient(120deg,#ffd1e8,#ff8fc0 35%,#c9a7ff 65%,#ff9ecb);
+  -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 26px rgba(255,143,192,.35));
+}
+.sub{font-size:clamp(1rem,3.5vw,1.35rem);color:#ffd9ea;font-weight:300;text-align:center}
+.hl{font-family:'Great Vibes',cursive;font-size:1.6em;color:#ff8ab8;margin-left:.15em}
+
+.btn{
+  margin-top:8px;padding:15px 36px;border-radius:999px;cursor:pointer;
+  border:1px solid rgba(255,150,200,.55);
+  background:linear-gradient(120deg,#ff5d9e,#b06bff);
+  color:#fff;font-family:'Poppins',sans-serif;font-size:15px;font-weight:500;letter-spacing:.04em;
+  box-shadow:0 12px 34px -8px rgba(255,93,158,.55);
+  transition:transform .3s,box-shadow .3s;
+  animation:btnPulse 2.6s ease-in-out infinite;
+}
+.btn:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 16px 44px -8px rgba(255,93,158,.75)}
+@keyframes btnPulse{0%,100%{box-shadow:0 12px 34px -8px rgba(255,93,158,.55)}50%{box-shadow:0 12px 46px -4px rgba(255,93,158,.8)}}
+
+.count{position:absolute;top:26px;left:30px;font-size:11px;letter-spacing:.32em;color:rgba(255,255,255,.5)}
+
+.polaroid{
+  position:relative;
+  background:#fffdf8;
+  padding:16px 16px 18px;
+  border-radius:6px;
+  width:min(78vw,360px);
+  box-shadow:0 30px 70px -18px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.07);
+  transform:translateY(26px) rotate(var(--tilt,-2deg));
+}
+.slide.active>.polaroid{transform:rotate(var(--tilt,-2deg))}
+.tape{
+  position:absolute;top:-13px;left:50%;width:88px;height:24px;z-index:2;
+  transform:translateX(-50%) rotate(-3deg);
+  background:rgba(255,173,210,.78);
+  border-radius:2px;box-shadow:0 2px 6px rgba(0,0,0,.18);
+}
+.img-wrap{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:3px;background:#f3eaf7}
+.img-wrap .bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(20px) brightness(.55);transform:scale(1.15)}
+.img-wrap .fg-img{position:relative;width:100%;height:100%;object-fit:contain;display:block}
+.img-wrap::after{
+  content:"";position:absolute;top:0;left:-80%;width:55%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);
+  transform:skewX(-18deg);
+}
+.slide.active .img-wrap::after{animation:shine 1.5s .8s ease}
+@keyframes shine{to{left:135%}}
+.cap-line{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(1.35rem,5.5vw,1.9rem);
+  color:#3c2233;text-align:center;padding-top:13px;line-height:1.2;
+}
+.sub-cap{font-size:clamp(.85rem,3vw,1rem);color:rgba(255,255,255,.78);font-weight:300;letter-spacing:.05em;text-align:center;max-width:min(86vw,420px)}
+
+.spark{position:absolute;color:#ffd9ea;font-size:15px;pointer-events:none;text-shadow:0 0 14px rgba(255,182,213,.95);animation:twinkle 2.6s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:1;transform:scale(1.15)}}
+
+.childhood-wrap{display:flex;align-items:center;justify-content:center;position:relative}
+.childhood-wrap .polaroid{width:min(42vw,178px);padding:10px 10px 12px}
+.childhood-wrap .polaroid:nth-child(2){margin-left:-18px;z-index:3}
+.childhood-wrap .polaroid .cap-line{font-size:clamp(.9rem,3.6vw,1.15rem);padding-top:8px}
+.slide.active .childhood-wrap .polaroid{animation:popIn .9s cubic-bezier(.22,.61,.36,1) both}
+.slide.active .childhood-wrap .polaroid:nth-child(2){animation-delay:.28s}
+@keyframes popIn{from{opacity:0;transform:translateY(34px) rotate(var(--tilt)) scale(.88)}to{opacity:1;transform:rotate(var(--tilt)) scale(1)}}
+
+.leo-symbol{
+  font-size:clamp(4.2rem,16vw,7rem);line-height:1;
+  background:linear-gradient(140deg,#ffe9a8,#ffb347 45%,#ff8a3c 75%,#ffd98a);
+  -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 30px rgba(255,179,71,.55));
+  animation:sunPulse 3.2s ease-in-out infinite;
+}
+@keyframes sunPulse{0%,100%{filter:drop-shadow(0 0 22px rgba(255,179,71,.45))}50%{filter:drop-shadow(0 0 42px rgba(255,179,71,.85))}}
+.leo-title{
+  font-size:clamp(2.6rem,10vw,5.4rem);line-height:1.1;text-align:center;
+  background:linear-gradient(120deg,#ffe9a8,#ffb347 45%,#ff9e5c 75%,#ffd98a);
+  -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 24px rgba(255,179,71,.35));
+}
+.quote{
+  font-size:clamp(.9rem,3.4vw,1.12rem);font-weight:300;font-style:italic;
+  color:rgba(255,236,200,.92);text-align:center;max-width:min(88vw,520px);line-height:1.55;
+}
+.q-div{color:rgba(255,200,120,.65);font-size:13px;letter-spacing:.5em;text-align:center}
+.leo-sub{color:rgba(255,226,180,.85)}
+
+.heart-big{position:relative;width:118px;height:108px;animation:beat 1.5s ease-in-out infinite}
+.heart-big::before,.heart-big::after{content:"";position:absolute;top:0;width:60px;height:100px;background:linear-gradient(#ff5e8a,#ff2d6f);border-radius:60px 60px 0 0;filter:drop-shadow(0 0 24px rgba(255,45,111,.55))}
+.heart-big::before{left:60px;transform:rotate(-45deg);transform-origin:0 100%}
+.heart-big::after{left:0;transform:rotate(45deg);transform-origin:100% 100%}
+@keyframes beat{0%,100%{transform:scale(1)}18%{transform:scale(1.15)}36%{transform:scale(1)}54%{transform:scale(1.1)}}
+
+.outro-title{font-size:clamp(2.6rem,9vw,5.2rem);line-height:1.1;text-align:center;background:linear-gradient(120deg,#ffd1e8,#ff8fc0 50%,#c9a7ff);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 22px rgba(255,143,192,.3))}
+.credit{position:absolute;bottom:22px;font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,.42)}
+
+.arrow{
+  position:fixed;top:50%;transform:translateY(-50%);z-index:10;
+  width:52px;height:52px;border-radius:50%;cursor:pointer;
+  border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);
+  color:#ffd7e8;font-size:26px;line-height:1;font-family:'Poppins',sans-serif;
+  backdrop-filter:blur(8px);transition:.3s;
+}
+.arrow:hover{background:rgba(255,140,190,.28);border-color:rgba(255,160,205,.6);box-shadow:0 0 22px rgba(255,122,179,.35);transform:translateY(-50%) scale(1.1)}
+.arrow:disabled{opacity:.22;pointer-events:none}
+.prev{left:22px}.next{right:22px}
+
+.dots{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);display:flex;gap:16px;z-index:10}
+.dot{background:none;border:none;color:rgba(255,255,255,.32);font-size:13px;cursor:pointer;transition:.35s;padding:4px;line-height:1}
+.dot.active{color:#ff7ab3;transform:scale(1.6);filter:drop-shadow(0 0 9px rgba(255,122,179,.85))}
+
+.hint{
+  position:fixed;left:50%;bottom:64px;transform:translateX(-50%);z-index:10;
+  font-size:11.5px;letter-spacing:.14em;color:rgba(255,255,255,.45);
+  transition:opacity .7s;white-space:nowrap;
+}
+.hint.hide{opacity:0}
+
+.burst-heart{position:fixed;z-index:50;pointer-events:none;transform:translate(-50%,-50%);animation:burst .95s ease-out forwards}
+@keyframes burst{to{transform:translate(calc(-50% + var(--tx)),calc(-50% + var(--ty))) scale(1.25);opacity:0}}
+
+@media (max-width:520px){
+  .arrow{width:40px;height:40px;font-size:20px}
+  .prev{left:8px}.next{right:8px}
+  .count{top:18px;left:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01s!important}
+}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="vignette"></div>
+
+<section class="slide" id="intro">
+  <p class="kicker">a little corner of the internet, made of love</p>
+  <h1 class="script title">She is Namya</h1>
+  <p class="sub">…but I call her<span class="script hl">Namu</span></p>
+  <button class="btn" id="beginBtn">Begin our story ♥</button>
+</section>
+
+<section class="slide">
+  <span class="count">01 / 06</span>
+  <span class="spark" style="top:16%;left:14%;animation-delay:.2s">✦</span>
+  <span class="spark" style="top:24%;right:13%;animation-delay:1.3s">✦</span>
+  <div class="polaroid" style="--tilt:-3deg">
+    <span class="tape"></span>
+    <div class="img-wrap">
+      <img class="bg-img" src="photos/photo-1.jpeg" alt="">
+      <img class="fg-img" src="photos/photo-1.jpeg" alt="Namya">
+    </div>
+    <p class="cap-line">Some people walk into your life…</p>
+  </div>
+  <p class="sub-cap">…and quietly, everything becomes beautiful.</p>
+</section>
+
+<section class="slide">
+  <span class="count">02 / 06</span>
+  <span class="spark" style="top:14%;right:16%;animation-delay:.6s">✦</span>
+  <div class="polaroid" style="--tilt:2.5deg">
+    <span class="tape"></span>
+    <div class="img-wrap">
+      <img class="bg-img" src="photos/photo-2.jpeg" alt="">
+      <img class="fg-img" src="photos/photo-2.jpeg" alt="Namya">
+    </div>
+    <p class="cap-line">Her smile is my favorite view</p>
+  </div>
+  <p class="sub-cap">the kind of beautiful that poems try to describe.</p>
+</section>
+
+<section class="slide">
+  <span class="count">03 / 06</span>
+  <span class="spark" style="top:20%;left:12%;animation-delay:.9s">✦</span>
+  <span class="spark" style="bottom:26%;right:11%;animation-delay:.1s">✦</span>
+  <div class="polaroid" style="--tilt:-2deg">
+    <span class="tape"></span>
+    <div class="img-wrap">
+      <img class="bg-img" src="photos/photo-3.jpeg" alt="">
+      <img class="fg-img" src="photos/photo-3.jpeg" alt="Namya">
+    </div>
+    <p class="cap-line">The world calls her Namya</p>
+  </div>
+  <p class="sub-cap">…I call her Namu — because she is mine to call.</p>
+</section>
+
+<section class="slide">
+  <span class="count">04 / 06</span>
+  <span class="spark" style="top:17%;left:15%;animation-delay:.4s">✦</span>
+  <div class="polaroid" style="--tilt:3deg">
+    <span class="tape"></span>
+    <div class="img-wrap">
+      <img class="bg-img" src="photos/photo-4.jpeg" alt="">
+      <img class="fg-img" src="photos/photo-4.jpeg" alt="Namya">
+    </div>
+    <p class="cap-line">Every photo tells a story</p>
+  </div>
+  <p class="sub-cap">and this one is my favorite chapter.</p>
+</section>
+
+<section class="slide">
+  <span class="count">05 / 06</span>
+  <span class="spark" style="top:15%;left:12%;animation-delay:.5s">✦</span>
+  <span class="spark" style="top:22%;right:11%;animation-delay:1.4s">✦</span>
+  <div class="childhood-wrap">
+    <div class="polaroid" style="--tilt:-7deg">
+      <span class="tape" style="transform:translateX(-50%) rotate(-5deg)"></span>
+      <div class="img-wrap">
+        <img class="bg-img" src="photos/photo-5.jpeg" alt="">
+        <img class="fg-img" src="photos/photo-5.jpeg" alt="Little Namya">
+      </div>
+      <p class="cap-line">little Namu</p>
+    </div>
+    <div class="polaroid" style="--tilt:6deg">
+      <span class="tape" style="transform:translateX(-50%) rotate(4deg)"></span>
+      <div class="img-wrap">
+        <img class="bg-img" src="photos/photo-6.jpeg" alt="">
+        <img class="fg-img" src="photos/photo-6.jpeg" alt="Little Namya">
+      </div>
+      <p class="cap-line">the cutest kid</p>
+    </div>
+  </div>
+  <p class="sub-cap">Namu's childhood stories — every chapter of her is my favorite, even the ones written before me.</p>
+</section>
+
+<section class="slide">
+  <span class="count">06 / 06</span>
+  <div class="leo-symbol">♌</div>
+  <h2 class="script leo-title">She is a Leo woman</h2>
+  <p class="quote">"A Leo woman doesn't chase the spotlight — she is the spotlight."</p>
+  <p class="q-div">✦ ✦ ✦</p>
+  <p class="quote">"Fierce heart, golden soul, born to love out loud."</p>
+  <p class="q-div">✦ ✦ ✦</p>
+  <p class="quote">"When a Leo loves you, she loves you like sunlight — warm, fearless, and everywhere at once."</p>
+  <p class="sub-cap leo-sub">her Leo story: ruled by the sun, adored by one who happily orbits her like a planet.</p>
+</section>
+
+<section class="slide" id="outro">
+  <div class="heart-big"></div>
+  <h2 class="script outro-title">She is Namya. She is my Namu.</h2>
+  <p class="sub">Some stories don't end — they just keep getting more beautiful.</p>
+  <button class="btn" id="replayBtn">Read it again ♥</button>
+  <p class="credit">made with all my love · for namu</p>
+</section>
+
+<button class="arrow prev" id="prevBtn" aria-label="Previous slide">‹</button>
+<button class="arrow next" id="nextBtn" aria-label="Next slide">›</button>
+<div class="dots" id="dots"></div>
+<div class="hint" id="hint">tap anywhere · swipe · or press →</div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+const dotsWrap=document.getElementById('dots');
+const hint=document.getElementById('hint');
+const prevBtn=document.getElementById('prevBtn');
+const nextBtn=document.getElementById('nextBtn');
+let cur=0,moved=false;
+
+slides.forEach((_,i)=>{
+  const d=document.createElement('button');
+  d.className='dot';d.textContent='♥';
+  d.setAttribute('aria-label','Go to slide '+(i+1));
+  d.addEventListener('click',e=>{e.stopPropagation();go(i)});
+  dotsWrap.appendChild(d);
+});
+const dots=[...dotsWrap.children];
+
+function go(n){
+  if(n<0||n>=slides.length||n===cur&&slides[cur].classList.contains('active'))return;
+  slides[cur].classList.remove('active');
+  cur=Math.max(0,Math.min(slides.length-1,n));
+  slides[cur].classList.add('active');
+  dots.forEach((d,i)=>d.classList.toggle('active',i===cur));
+  prevBtn.disabled=cur===0;
+  nextBtn.disabled=cur===slides.length-1;
+  if(!moved){moved=true;setTimeout(()=>hint.classList.add('hide'),400)}
+}
+const next=()=>go(cur+1);
+const prev=()=>go(cur-1);
+
+document.getElementById('beginBtn').addEventListener('click',e=>{e.stopPropagation();next()});
+document.getElementById('replayBtn').addEventListener('click',e=>{e.stopPropagation();go(0)});
+prevBtn.addEventListener('click',e=>{e.stopPropagation();prev()});
+nextBtn.addEventListener('click',e=>{e.stopPropagation();next()});
+
+document.addEventListener('click',e=>{
+  if(e.target.closest('button'))return;
+  burst(e.clientX,e.clientY);
+  if(cur<slides.length-1)next();
+});
+
+document.addEventListener('keydown',e=>{
+  if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next()}
+  else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev()}
+  else if(e.key==='Home')go(0);
+  else if(e.key==='End')go(slides.length-1);
+});
+
+let sx=0,sy=0;
+document.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+document.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;
+  if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)){dx<0?next():prev()}
+},{passive:true});
+
+const heartColors=['#ff77b0','#ff4d88','#ffc2d6','#c9a7ff','#ffb56b'];
+function burst(x,y){
+  for(let i=0;i<7;i++){
+    const h=document.createElement('span');
+    h.className='burst-heart';h.textContent='♥';
+    h.style.fontSize=(11+Math.random()*14)+'px';
+    h.style.left=x+'px';h.style.top=y+'px';
+    h.style.color=heartColors[Math.floor(Math.random()*heartColors.length)];
+    h.style.setProperty('--tx',(Math.random()*130-65)+'px');
+    h.style.setProperty('--ty',(-40-Math.random()*100)+'px');
+    document.body.appendChild(h);
+    h.addEventListener('animationend',()=>h.remove());
+  }
+}
+
+function floatHeart(){
+  if(document.hidden)return;
+  if(document.querySelectorAll('.float-heart').length>24)return;
+  const h=document.createElement('span');
+  h.className='float-heart';h.textContent='♥';
+  h.style.left=Math.random()*100+'vw';
+  h.style.fontSize=(13+Math.random()*19)+'px';
+  h.style.color=heartColors[Math.floor(Math.random()*heartColors.length)];
+  h.style.setProperty('--o',(0.14+Math.random()*0.28).toFixed(2));
+  h.style.setProperty('--sway',(Math.random()*160-80)+'px');
+  h.style.animationDuration=(8+Math.random()*8)+'s';
+  document.body.appendChild(h);
+  h.addEventListener('animationend',()=>h.remove());
+}
+for(let i=0;i<9;i++)setTimeout(floatHeart,i*220);
+setInterval(floatHeart,650);
+
+setTimeout(()=>go(0),150);
+</script>
+</body>
+</html>
